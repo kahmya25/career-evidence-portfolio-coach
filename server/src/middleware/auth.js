@@ -1,0 +1,2 @@
+import User from '../models/User.js';
+export async function requireAuth(req,res,next){try{if(!req.session?.userId)return res.status(401).json({error:{code:'UNAUTHENTICATED',message:'Please log in to continue.'}});const user=await User.findById(req.session.userId).select('_id email displayName role emailVerified');if(!user){req.session.destroy(()=>{});return res.status(401).json({error:{code:'UNAUTHENTICATED',message:'Please log in to continue.'}})}req.user=user;next()}catch(err){next(err)}}

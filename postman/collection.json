@@ -1,0 +1,11 @@
+{
+  "info": {"name": "Career Evidence and Portfolio Coach API (foundation)", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key":"baseUrl","value":"http://localhost:4000"}],
+  "item": [
+    {"name":"Health", "request":{"method":"GET","url":"{{baseUrl}}/api/health"}},
+    {"name":"Register student", "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"displayName\": \"Demo Student\",\n  \"email\": \"student@example.test\",\n  \"password\": \"change-this-demo-password\"\n}"},"url":"{{baseUrl}}/api/auth/register"}},
+    {"name":"Current user (requires verified login session)", "request":{"method":"GET","url":"{{baseUrl}}/api/auth/me"}},
+    {"name":"List evidence (requires session)", "request":{"method":"GET","url":"{{baseUrl}}/api/evidence"}},
+    {"name":"Create evidence (requires session)", "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"title\": \"Example project\",\n  \"description\": \"Replace this with a truthful project summary.\",\n  \"type\": \"Project\",\n  \"tags\": [\"React\", \"Node.js\"],\n  \"status\": \"Draft\"\n}"},"url":"{{baseUrl}}/api/evidence"}}
+  ]
+}
